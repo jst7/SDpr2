@@ -31,9 +31,15 @@ namespace interfaz.RMI1 {
         
         private System.Threading.SendOrPostCallback leerArchivoOperationCompleted;
         
+        private System.Threading.SendOrPostCallback SetUsuarioOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetluminosidadOperationCompleted;
         
+        private System.Threading.SendOrPostCallback escribirlogOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetPantallaOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback escribirpantallaOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetHumedadOperationCompleted;
         
@@ -83,10 +89,19 @@ namespace interfaz.RMI1 {
         public event leerArchivoCompletedEventHandler leerArchivoCompleted;
         
         /// <remarks/>
+        public event SetUsuarioCompletedEventHandler SetUsuarioCompleted;
+        
+        /// <remarks/>
         public event GetluminosidadCompletedEventHandler GetluminosidadCompleted;
         
         /// <remarks/>
+        public event escribirlogCompletedEventHandler escribirlogCompleted;
+        
+        /// <remarks/>
         public event GetPantallaCompletedEventHandler GetPantallaCompleted;
+        
+        /// <remarks/>
+        public event escribirpantallaCompletedEventHandler escribirpantallaCompleted;
         
         /// <remarks/>
         public event GetHumedadCompletedEventHandler GetHumedadCompleted;
@@ -128,6 +143,34 @@ namespace interfaz.RMI1 {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:SetUsuario", RequestNamespace="http://rmistation", OneWay=true, Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void SetUsuario([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string p) {
+            this.Invoke("SetUsuario", new object[] {
+                        p});
+        }
+        
+        /// <remarks/>
+        public void SetUsuarioAsync(string p) {
+            this.SetUsuarioAsync(p, null);
+        }
+        
+        /// <remarks/>
+        public void SetUsuarioAsync(string p, object userState) {
+            if ((this.SetUsuarioOperationCompleted == null)) {
+                this.SetUsuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSetUsuarioOperationCompleted);
+            }
+            this.InvokeAsync("SetUsuario", new object[] {
+                        p}, this.SetUsuarioOperationCompleted, userState);
+        }
+        
+        private void OnSetUsuarioOperationCompleted(object arg) {
+            if ((this.SetUsuarioCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SetUsuarioCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:Getluminosidad", RequestNamespace="http://rmistation", ResponseNamespace="http://rmistation", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return", IsNullable=true)]
         public string Getluminosidad() {
@@ -156,6 +199,34 @@ namespace interfaz.RMI1 {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:escribirlog", RequestNamespace="http://rmistation", OneWay=true, Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void escribirlog([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string s) {
+            this.Invoke("escribirlog", new object[] {
+                        s});
+        }
+        
+        /// <remarks/>
+        public void escribirlogAsync(string s) {
+            this.escribirlogAsync(s, null);
+        }
+        
+        /// <remarks/>
+        public void escribirlogAsync(string s, object userState) {
+            if ((this.escribirlogOperationCompleted == null)) {
+                this.escribirlogOperationCompleted = new System.Threading.SendOrPostCallback(this.OnescribirlogOperationCompleted);
+            }
+            this.InvokeAsync("escribirlog", new object[] {
+                        s}, this.escribirlogOperationCompleted, userState);
+        }
+        
+        private void OnescribirlogOperationCompleted(object arg) {
+            if ((this.escribirlogCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.escribirlogCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:GetPantalla", RequestNamespace="http://rmistation", ResponseNamespace="http://rmistation", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return", IsNullable=true)]
         public string GetPantalla() {
@@ -180,6 +251,34 @@ namespace interfaz.RMI1 {
             if ((this.GetPantallaCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetPantallaCompleted(this, new GetPantallaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:escribirpantalla", RequestNamespace="http://rmistation", OneWay=true, Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void escribirpantalla([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string s) {
+            this.Invoke("escribirpantalla", new object[] {
+                        s});
+        }
+        
+        /// <remarks/>
+        public void escribirpantallaAsync(string s) {
+            this.escribirpantallaAsync(s, null);
+        }
+        
+        /// <remarks/>
+        public void escribirpantallaAsync(string s, object userState) {
+            if ((this.escribirpantallaOperationCompleted == null)) {
+                this.escribirpantallaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnescribirpantallaOperationCompleted);
+            }
+            this.InvokeAsync("escribirpantalla", new object[] {
+                        s}, this.escribirpantallaOperationCompleted, userState);
+        }
+        
+        private void OnescribirpantallaOperationCompleted(object arg) {
+            if ((this.escribirpantallaCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.escribirpantallaCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -314,6 +413,10 @@ namespace interfaz.RMI1 {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    public delegate void SetUsuarioCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
     public delegate void GetluminosidadCompletedEventHandler(object sender, GetluminosidadCompletedEventArgs e);
     
     /// <remarks/>
@@ -340,6 +443,10 @@ namespace interfaz.RMI1 {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    public delegate void escribirlogCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
     public delegate void GetPantallaCompletedEventHandler(object sender, GetPantallaCompletedEventArgs e);
     
     /// <remarks/>
@@ -363,6 +470,10 @@ namespace interfaz.RMI1 {
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    public delegate void escribirpantallaCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]

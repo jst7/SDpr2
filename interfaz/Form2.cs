@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace interfaz
 {
     public partial class Form2 : Form
@@ -24,8 +25,9 @@ namespace interfaz
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "jorge" && textBox2.Text == "1234")
+            if (leerusuarios())
             {
+                RMI1.RMIStation rmi = new RMI1.RMIStation();
                 this.Visible = false;
                 Form1 inter = new Form1(textBox1.Text);
                 inter.Show();
@@ -55,6 +57,23 @@ namespace interfaz
            
             
         }
- 
+        private Boolean leerusuarios() {
+
+           string line;
+                    
+            System.IO.StreamReader file = new System.IO.StreamReader("C:\\Users\\" + Environment.UserName + "\\Desktop\\usuarios.txt");
+            while ((line = file.ReadLine()) != null)   {
+               
+                if (line == textBox1.Text+"|"+textBox2.Text) {
+                    file.Close();
+                    return true;
+                }
+                
+                
+            }
+
+            file.Close();
+            return false;
+        }
     }
 }

@@ -44,6 +44,7 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.button4 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -97,7 +98,7 @@
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Location = new System.Drawing.Point(26, 235);
+            this.groupBox2.Location = new System.Drawing.Point(26, 216);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(289, 189);
             this.groupBox2.TabIndex = 1;
@@ -111,6 +112,7 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
             this.comboBox2.TabIndex = 2;
+            this.comboBox2.Text = "Station?";
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // comboBox1
@@ -191,12 +193,23 @@
             this.comboBox3.Text = "Registro de Sesión";
             this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(104, 411);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(124, 23);
+            this.button4.TabIndex = 8;
+            this.button4.Text = "Cerrar y cambiar user";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(346, 436);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.groupBox2);
@@ -231,6 +244,7 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button button4;
     }
 }
 

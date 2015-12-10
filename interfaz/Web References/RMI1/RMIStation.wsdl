@@ -5,6 +5,32 @@
 	</wsdl:documentation>
   <wsdl:types>
     <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://rmistation">
+      <xs:element name="leerArchivo">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="s" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="leerArchivoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetHumedad">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetHumedadResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
       <xs:element name="SetPantalla">
         <xs:complexType>
           <xs:sequence>
@@ -24,41 +50,10 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
-      <xs:element name="GetHumedad">
-        <xs:complexType>
-          <xs:sequence />
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="GetHumedadResponse">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="leerArchivo">
+      <xs:element name="escribirlog">
         <xs:complexType>
           <xs:sequence>
             <xs:element minOccurs="0" name="s" nillable="true" type="xs:string" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="leerArchivoResponse">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="GetTemperatura">
-        <xs:complexType>
-          <xs:sequence />
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="GetTemperaturaResponse">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -74,6 +69,32 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
+      <xs:element name="escribirpantalla">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="s" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetTemperatura">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetTemperaturaResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SetUsuario">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="p" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
     </xs:schema>
   </wsdl:types>
   <wsdl:message name="leerArchivoRequest">
@@ -82,17 +103,26 @@
   <wsdl:message name="leerArchivoResponse">
     <wsdl:part name="parameters" element="ns:leerArchivoResponse" />
   </wsdl:message>
+  <wsdl:message name="SetUsuarioRequest">
+    <wsdl:part name="parameters" element="ns:SetUsuario" />
+  </wsdl:message>
   <wsdl:message name="GetluminosidadRequest">
     <wsdl:part name="parameters" element="ns:Getluminosidad" />
   </wsdl:message>
   <wsdl:message name="GetluminosidadResponse">
     <wsdl:part name="parameters" element="ns:GetluminosidadResponse" />
   </wsdl:message>
+  <wsdl:message name="escribirlogRequest">
+    <wsdl:part name="parameters" element="ns:escribirlog" />
+  </wsdl:message>
   <wsdl:message name="GetPantallaRequest">
     <wsdl:part name="parameters" element="ns:GetPantalla" />
   </wsdl:message>
   <wsdl:message name="GetPantallaResponse">
     <wsdl:part name="parameters" element="ns:GetPantallaResponse" />
+  </wsdl:message>
+  <wsdl:message name="escribirpantallaRequest">
+    <wsdl:part name="parameters" element="ns:escribirpantalla" />
   </wsdl:message>
   <wsdl:message name="GetHumedadRequest">
     <wsdl:part name="parameters" element="ns:GetHumedad" />
@@ -114,13 +144,22 @@
       <wsdl:input wsaw:Action="urn:leerArchivo" message="ns:leerArchivoRequest" />
       <wsdl:output wsaw:Action="urn:leerArchivoResponse" message="ns:leerArchivoResponse" />
     </wsdl:operation>
+    <wsdl:operation name="SetUsuario">
+      <wsdl:input wsaw:Action="urn:SetUsuario" message="ns:SetUsuarioRequest" />
+    </wsdl:operation>
     <wsdl:operation name="Getluminosidad">
       <wsdl:input wsaw:Action="urn:Getluminosidad" message="ns:GetluminosidadRequest" />
       <wsdl:output wsaw:Action="urn:GetluminosidadResponse" message="ns:GetluminosidadResponse" />
     </wsdl:operation>
+    <wsdl:operation name="escribirlog">
+      <wsdl:input wsaw:Action="urn:escribirlog" message="ns:escribirlogRequest" />
+    </wsdl:operation>
     <wsdl:operation name="GetPantalla">
       <wsdl:input wsaw:Action="urn:GetPantalla" message="ns:GetPantallaRequest" />
       <wsdl:output wsaw:Action="urn:GetPantallaResponse" message="ns:GetPantallaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="escribirpantalla">
+      <wsdl:input wsaw:Action="urn:escribirpantalla" message="ns:escribirpantallaRequest" />
     </wsdl:operation>
     <wsdl:operation name="GetHumedad">
       <wsdl:input wsaw:Action="urn:GetHumedad" message="ns:GetHumedadRequest" />
@@ -154,6 +193,18 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SetUsuario">
+      <soap:operation soapAction="urn:SetUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="escribirlog">
+      <soap:operation soapAction="urn:escribirlog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="GetPantalla">
       <soap:operation soapAction="urn:GetPantalla" style="document" />
       <wsdl:input>
@@ -162,6 +213,12 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="escribirpantalla">
+      <soap:operation soapAction="urn:escribirpantalla" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="GetHumedad">
       <soap:operation soapAction="urn:GetHumedad" style="document" />
@@ -208,6 +265,18 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SetUsuario">
+      <soap12:operation soapAction="urn:SetUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="escribirlog">
+      <soap12:operation soapAction="urn:escribirlog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="GetPantalla">
       <soap12:operation soapAction="urn:GetPantalla" style="document" />
       <wsdl:input>
@@ -216,6 +285,12 @@
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="escribirpantalla">
+      <soap12:operation soapAction="urn:escribirpantalla" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="GetHumedad">
       <soap12:operation soapAction="urn:GetHumedad" style="document" />
@@ -262,6 +337,18 @@
         <mime:content part="parameters" type="application/xml" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SetUsuario">
+      <http:operation location="SetUsuario" />
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="escribirlog">
+      <http:operation location="escribirlog" />
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="GetPantalla">
       <http:operation location="GetPantalla" />
       <wsdl:input>
@@ -270,6 +357,12 @@
       <wsdl:output>
         <mime:content part="parameters" type="application/xml" />
       </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="escribirpantalla">
+      <http:operation location="escribirpantalla" />
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="GetHumedad">
       <http:operation location="GetHumedad" />
