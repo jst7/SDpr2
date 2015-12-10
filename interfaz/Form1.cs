@@ -215,6 +215,7 @@ namespace interfaz
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
+
         }
 
 
